@@ -215,4 +215,13 @@ class OrbitalCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : OrbitalCircleView {
+            val view : OrbitalCircleView = OrbitalCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
