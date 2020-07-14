@@ -191,4 +191,26 @@ class OrbitalCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : OrbitalCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val oc : OrbitalCircle = OrbitalCircle(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            oc.draw(canvas, paint)
+            animator.animate {
+                oc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            oc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
