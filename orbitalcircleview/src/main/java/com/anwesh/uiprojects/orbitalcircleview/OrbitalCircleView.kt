@@ -30,10 +30,10 @@ fun Canvas.drawOrbitalCircle(i : Int, scale : Float, w : Float, h : Float, paint
     val sf1 : Float = sf.divideScale(0, 2)
     val sf2 : Float = sf.divideScale(1, 2)
     val sf2i : Float = sf2.divideScale(i, orbits)
-    val concR = Math.min(w, h) / orbits
+    val concR = Math.min(w, h) / (2 * orbits)
     val r : Float = Math.min(w, h) / rFactor
     val deg : Float = 90f / orbits
-    val x : Float = sf2i * concR * i
+    val x : Float = sf2i * concR * (i + 1)
     if (i == 0) {
         paint.style = Paint.Style.FILL
         drawCircle(0f, 0f, r * sf1, paint)
